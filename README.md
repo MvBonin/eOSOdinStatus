@@ -38,4 +38,4 @@ To Automate it, rightclick on windows start-button -> Computer Management -> Tas
 There you can add a task, edit the Trigger to 00:00 daily and in advanced you can put it on "Every 10 minutes".  
 Under Actions you setup python.exe as program/script, C:/path/to/script/fetchGithubOdinWindows.py as the argument and last but not least C:/path/to/script as the starting location.
 
-As i mainly use windows, I didn't test the windows version much.
+As i mainly use linux, I didn't test the windows version much.
