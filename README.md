@@ -12,7 +12,7 @@ I just run it hourly with cron:
 -- add a new line:  
 `0 * * * * /path/to/script/fetchGithubOdin.py`
 ## Requirements
-`sudo apt install python3-pip`
+`sudo apt install python3-pip`  
 `pip3 install urllib`  
 `pip3 install notify-send`  
 `pip3 install bs4`
