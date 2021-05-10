@@ -51,6 +51,8 @@ if lastRead != sendString or isNotificationArg:
     print("Status Notification")
     #notification(sendString, title='eOS 6.0 Odin Dev Status', app_name="elementaryOS", image="computer")
     notifications.Notify('test', 0, 'computer', "eOS 6.0 Odin Dev Status", sendString, [], {}, 5000)
+    with open(".lastStatus", "w") as f:
+        f.write(sendString)
 print(sendString)
 
 
