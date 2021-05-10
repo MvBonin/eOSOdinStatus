@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 import urllib.request
 from bs4 import BeautifulSoup
-from notify import notification
+#from notify import notification
 import sys
 import os
-#from pydbus import SessionBus
+from pydbus import SessionBus
 
 os.environ['DBUS_SESSION_BUS_ADDRESS'] = 'unix:path=/run/user/'+ str(os.geteuid()) +'/bus'
 os.environ['DISPLAY'] = ':0'
 
-#bus = SessionBus()
-#notifications = bus.get('.Notifications')
+bus = SessionBus()
+notifications = bus.get('.Notifications')
 
-#notifications.Notify('test', 0, 'dialog-information', "Hello World!", "pydbus works :)", [], {}, 5000)
+
 
 
 ## Is the Notification arg set? -n
@@ -49,8 +49,8 @@ with open(".lastStatus", "r") as f:
 
 if lastRead != sendString or isNotificationArg:
     print("Status Notification")
-    notification(sendString, title='eOS 6.0 Odin Dev Status', app_name="elementaryOS", image="computer")
-    
+    #notification(sendString, title='eOS 6.0 Odin Dev Status', app_name="elementaryOS", image="computer")
+    notifications.Notify('test', 0, 'dialog-information', "eOS 6.0 Odin Dev Status", sendString, [], {}, 5000)
 print(sendString)
 
 
