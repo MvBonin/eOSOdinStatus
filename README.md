@@ -2,8 +2,9 @@
 A simple python script to notify about progress on elementary OS 6.0 Odin Release.
 
 ## Usage
-Just run the script with **python3 fetchGithubOdin.py** or with  
-**python3 fetchGithubOdin.py -n** if you want to get a notification, even if the State of eOS has not changed since last time you checked.
+Just run the script with  
+`python3 fetchGithubOdin.py` or with  
+`python3 fetchGithubOdin.py -n` if you want to get a notification, even if the State of eOS has not changed since last time you checked.
 
 I just run it hourly with cron:  
 `chmod +x ./fetchGithubOdin.py`  
