@@ -11,6 +11,7 @@ Just run the script with
 
 I just run it every 5 minutes with crontab. Dont use the superuser crontab because the pip3 installs deps for your user:  
 `chmod +x ./fetchGithubOdin.py`  
+`chmod +x ./runner.sh`  
 `crontab -u USER -e`  
 -- add a new line:  
 `*/5 * * * * * /bin/bash /path/to/script/runner.sh`
