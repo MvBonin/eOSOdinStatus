@@ -22,6 +22,8 @@ I just run it every 5 minutes with crontab. Dont use the superuser crontab becau
 
 
 
+
+
 ### Windows users:
 Someone in reddit asked for a windows-version of the script.  
 So I added fetchGithubOdinWindows.py  
