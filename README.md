@@ -19,3 +19,23 @@ I just run it every 5 minutes with crontab. Dont use the superuser crontab becau
 `sudo apt install python3-pip`  
 `pip3 install pydbus`  
 `pip3 install bs4`
+
+
+
+### Windows users:
+Someone in reddit asked for a windows-version of the script.  
+So I added fetchGithubOdinWindows.py  
+
+The requirements for **windows** are  
+A Python3 installation,  
+`pip install bs4`  
+`pip install win10toast-persist`  
+then the script gets started with  
+`python fetchGithubOdinWindows.py` or  
+`python fetchGithubOdinWindows.py -n`
+
+To Automate it, rightclick on windows start-button -> Computer Management -> Task Scheduler.  
+There you can add a task, edit the Trigger to 00:00 daily and in advanced you can put it on "Every 10 minutes".  
+Under Actions you setup python.exe as program/script, C:/path/to/script/fetchGithubOdinWindows.py as the argument and last but not least C:/path/to/script as the starting location.
+
+As i mainly use windows, I didn't test the windows version much.
