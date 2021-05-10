@@ -1,6 +1,9 @@
 # eOSOdinStatus
 A simple python script to notify about progress on elementary OS 6.0 Odin Release.
 
+![Screenshot](./screenshot.png)
+
+
 ## Usage
 Just run the script with  
 `python3 fetchGithubOdin.py` or with  
