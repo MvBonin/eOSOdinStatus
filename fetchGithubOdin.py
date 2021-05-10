@@ -3,6 +3,17 @@ import urllib.request
 from bs4 import BeautifulSoup
 from notify import notification
 import sys
+import os
+#from pydbus import SessionBus
+
+os.environ['DBUS_SESSION_BUS_ADDRESS'] = 'unix:path=/run/user/'+ str(os.geteuid()) +'/bus'
+os.environ['DISPLAY'] = ':0'
+
+#bus = SessionBus()
+#notifications = bus.get('.Notifications')
+
+#notifications.Notify('test', 0, 'dialog-information', "Hello World!", "pydbus works :)", [], {}, 5000)
+
 
 ## Is the Notification arg set? -n
 isNotificationArg = False
@@ -23,16 +34,16 @@ sendString =  tooltip['aria-label'] + " - Updated " + lastUpdated.text
 lastRead = ""
 
 try:
-    f = open("lastStatus", "r")
+    f = open(".lastStatus", "r")
 except IOError:
     print("not openable")
-    g = open("lastStatus", "x")
+    g = open(".lastStatus", "x")
     g.write(sendString)
     isNotificationArg = True
     g.close()
 
 
-with open("lastStatus", "r") as f:
+with open(".lastStatus", "r") as f:
     lastRead = f.read()
 
 
@@ -42,3 +53,6 @@ if lastRead != sendString or isNotificationArg:
     
 print(sendString)
 
+
+
+##to debug use runner.sh -n > /home/USER/tmp.fetch 2>&1 in crontab
