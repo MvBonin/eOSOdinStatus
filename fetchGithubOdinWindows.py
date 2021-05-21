@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 #from notify import notification
 import sys
 import os
+import argparse
 
 #win10 stuff
 from win10toast_persist import ToastNotifier
@@ -11,11 +12,11 @@ from win10toast_persist import ToastNotifier
 toaster = ToastNotifier()
 
 ## Is the Notification arg set? -n
-isNotificationArg = False
-if len(sys.argv) > 1:
-    if sys.argv[1] == "-n":
-        isNotificationArg = True
+parser = argparse.ArgumentParser(description="Check elementaryOS Odin Status from github")
+parser.add_argument("--notify", "-n", action="store_true", help="Show Notification, even it it didn't change since last time you checked")
+args = parser.parse_args()
 
+isNotificationArg = args.notify
 
 content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/55')
 

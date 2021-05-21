@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 #from notify import notification
 import sys
 import os
+import argparse
+
 from pydbus import SessionBus
 
 os.environ['DBUS_SESSION_BUS_ADDRESS'] = 'unix:path=/run/user/'+ str(os.geteuid()) +'/bus'
@@ -12,14 +14,12 @@ os.environ['DISPLAY'] = ':0'
 bus = SessionBus()
 notifications = bus.get('.Notifications')
 
-
-
-
 ## Is the Notification arg set? -n
-isNotificationArg = False
-if len(sys.argv) > 1:
-    if sys.argv[1] == "-n":
-        isNotificationArg = True
+parser = argparse.ArgumentParser(description="Check elementaryOS Odin Status from github")
+parser.add_argument("--notify", "-n", action="store_true", help="Show Notification, even it it didn't change since last time you checked")
+args = parser.parse_args()
+
+isNotificationArg = args.notify
 
 
 content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/55')
