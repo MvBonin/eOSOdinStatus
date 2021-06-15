@@ -14,7 +14,7 @@ I just run it every 5 minutes with crontab. Dont use the superuser crontab becau
 `chmod +x ./runner.sh`  
 `crontab -u USER -e`  
 -- add a new line:  
-`*/5 * * * * * cd /PATH/TO/SCRIPT/ && /bin/bash /path/to/script/runner.sh`
+`*/5 * * * * cd /PATH/TO/SCRIPT/ && /bin/bash /path/to/script/runner.sh`
 ## Requirements
 `sudo apt install python3-pip`  
 `pip3 install pydbus`  
