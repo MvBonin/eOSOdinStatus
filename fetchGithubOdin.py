@@ -22,7 +22,7 @@ args = parser.parse_args()
 isNotificationArg = args.notify
 
 
-content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/55')
+content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/90') ##CHANGE URL HERE FOR DIFFERENT GITHUB PROJECT
 
 read_content = content.read()
 
@@ -30,7 +30,12 @@ soup = BeautifulSoup(read_content, 'html.parser')
 
 tooltip = soup.find(class_ = "tooltipped tooltipped-s")
 lastUpdated = soup.find("relative-time", class_ = "no-wrap")
-sendString =  tooltip['aria-label'] + " - Updated " + lastUpdated.text
+ttiparia = tooltip['aria-label']
+
+if ttiparia == "0 done / 0 in progress / 0 to do":
+    sendString =  "Updated " + lastUpdated.text
+else:
+    sendString =  ttiparia + " - Updated " + lastUpdated.text
 lastRead = ""
 
 try:
@@ -50,7 +55,7 @@ with open(".lastStatus", "r") as f:
 if lastRead != sendString or isNotificationArg:
     print("Status Notification")
     #notification(sendString, title='eOS 6.0 Odin Dev Status', app_name="elementaryOS", image="computer")
-    notifications.Notify('test', 0, 'computer', "eOS 6.0 Odin Dev Status", sendString, [], {}, 5000)
+    notifications.Notify('test', 0, 'computer', "eOS 6.1 Odin Dev Status", sendString, [], {}, 5000)
     with open(".lastStatus", "w") as f:
         f.write(sendString)
 print(sendString)

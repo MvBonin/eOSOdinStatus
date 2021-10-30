@@ -18,7 +18,7 @@ args = parser.parse_args()
 
 isNotificationArg = args.notify
 
-content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/55')
+content = urllib.request.urlopen('https://github.com/orgs/elementary/projects/90') ##CHANGE URL HERE FOR DIFFERENT GITHUB PROJECT
 
 read_content = content.read()
 
@@ -26,8 +26,14 @@ soup = BeautifulSoup(read_content, 'html.parser')
 
 tooltip = soup.find(class_ = "tooltipped tooltipped-s")
 lastUpdated = soup.find("relative-time", class_ = "no-wrap")
-sendString =  tooltip['aria-label'] + " - Updated " + lastUpdated.text
+ttiparia = tooltip['aria-label']
+
+if ttiparia == "0 done / 0 in progress / 0 to do":
+    sendString =  "Updated " + lastUpdated.text
+else:
+    sendString =  ttiparia + " - Updated " + lastUpdated.text
 lastRead = ""
+
 
 try:
     f = open(".lastStatus", "r")
